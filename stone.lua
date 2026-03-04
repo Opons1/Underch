@@ -6,8 +6,9 @@ function underch.stone.register_stone(name, id, mossy)
 	local cobble = "underch:" .. id .. "_cobble"
 	local brick = "underch:" .. id .. "_brick"
 	local block = "underch:" .. id .. "_block"
+	underch.stone.defs[id] = {}
 
-	minetest.register_node(base, {
+	core.register_node(base, {
 		description = name,
 		tiles = {"underch_" .. id .. ".png"},
 		groups = {cracky = 3, stone = 1, smoothstone = 1, jit_shadow = 1},
@@ -17,7 +18,7 @@ function underch.stone.register_stone(name, id, mossy)
 		sounds = default.node_sound_stone_defaults(),
 	})
 	
-	minetest.register_node(cobble, {
+	core.register_node(cobble, {
 		description = name .. " Cobble",
 		tiles = {"underch_" .. id .. "_cobble.png"},
 		is_ground_content = false,
@@ -26,7 +27,7 @@ function underch.stone.register_stone(name, id, mossy)
 		sounds = default.node_sound_stone_defaults(),
 	})
 	
-	minetest.register_node(brick, {
+	core.register_node(brick, {
 		description = name .. " Bricks",
 		paramtype2 = "facedir",
 		place_param2 = 0,
@@ -36,7 +37,7 @@ function underch.stone.register_stone(name, id, mossy)
 		sounds = default.node_sound_stone_defaults(),
 	})
 
-	minetest.register_node(block, {
+	core.register_node(block, {
 		description = name .. " Block",
 		tiles = {"underch_" .. id .."_block.png"},
 		is_ground_content = false,
@@ -47,13 +48,21 @@ function underch.stone.register_stone(name, id, mossy)
 	-----------TEST--------------
 	-----------------------------
 	--normal
-	underch.ores.register_ore(name .. " Coal", id .. "_coal", "default_mineral_coal.png", "default:coal", "underch_" .. id .. ".png", 3)
-	underch.ores.register_ore(name .. " Tin", id .. "_tin", "default_mineral_tin.png", "default:tin_lump", "underch_" .. id .. ".png", 2)
-	underch.ores.register_ore(name .. " Gold", id .. "_gold", "default_mineral_gold.png", "default:gold_lump", "underch_" .. id .. ".png", 2)
-	underch.ores.register_ore(name .. " Iron", id .. "_iron", "default_mineral_iron.png", "default:iron_lump", "underch_" .. id .. ".png", 2)
-	underch.ores.register_ore(name .. " Mese", id .. "_mese", "default_mineral_mese.png", "default:mese_lump", "underch_" .. id .. ".png", 1)
-	underch.ores.register_ore(name .. " Copper", id .. "_copper", "default_mineral_copper.png", "default:copper_lump", "underch_" .. id .. ".png", 2)
-	underch.ores.register_ore(name .. " Diamond", id .. "_diamond", "default_mineral_diamond.png", "default:diamond", "underch_" .. id .. ".png", 1)
+	underch.ores.register_ore(name.." Coal",    id .. "_coal",    "default_mineral_coal.png",     "default:coal",       "underch_" .. id .. ".png", 3)
+	underch.ores.register_ore(name.." Tin",     id .. "_tin",     "default_mineral_tin.png",     "default:tin_lump",    "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Gold",    id .. "_gold",    "default_mineral_gold.png",    "default:gold_lump",   "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Iron",    id .. "_iron",    "default_mineral_iron.png",    "default:iron_lump",   "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Mese",    id .. "_mese",    "default_mineral_mese.png",    "default:mese_lump",   "underch_" .. id .. ".png", 1)
+	underch.ores.register_ore(name.." Copper",  id .. "_copper",  "default_mineral_copper.png",  "default:copper_lump", "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Diamond", id .. "_diamond", "default_mineral_diamond.png", "default:diamond",     "underch_" .. id .. ".png", 1)
+	--logging the ores, debating whether this should be a for loop taking in a table or this monstrosity
+	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_coal")]    = core.get_content_id(base.."_coal_ore")
+	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_tin")]     = core.get_content_id(base.."_tin_ore")
+	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_gold")]    = core.get_content_id(base.."_gold_ore")
+	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_iron")]    = core.get_content_id(base.."_iron_ore")
+	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_mese")]    = core.get_content_id(base.."_mese_ore")
+	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_copper")]  = core.get_content_id(base.."_copper_ore")
+	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_diamond")] = core.get_content_id(base.."_diamond_ore")
 	--dense
 	--[[
 	underch.ores.register_dense_ore(name .. " Coal", id .. "_coal", "default_mineral_coal.png", "default:coal", "underch_" .. id .. ".png", 3)
@@ -65,7 +74,7 @@ function underch.stone.register_stone(name, id, mossy)
 	underch.ores.register_dense_ore(name .. " Diamond", id .. "_diamond", "default_mineral_diamond.png", "default:diamond", "underch_" .. id .. ".png", 1)
 	]]
 	--crafts
-	minetest.register_craft({
+	core.register_craft({
 		output = brick .. " 4",
 		recipe = {
 			{base, base},
@@ -73,7 +82,7 @@ function underch.stone.register_stone(name, id, mossy)
 		}
 	})
 	
-	minetest.register_craft({
+	core.register_craft({
 		output = block .. " 9",
 		recipe = {
 			{base, base, base},
@@ -82,7 +91,7 @@ function underch.stone.register_stone(name, id, mossy)
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		type = "cooking",
 		output = base,
 		recipe = cobble,
@@ -117,13 +126,15 @@ function underch.stone.register_stone(name, id, mossy)
 		name .. " Block",
 		default.node_sound_stone_defaults())
 
-	underch.stone.defs[id] = {}
-	underch.stone.defs[id].base = minetest.get_content_id(base)
-	underch.stone.defs[id].cobble = minetest.get_content_id(cobble)
+	
+	underch.stone.defs[id].base = core.get_content_id(base)
+	underch.stone.defs[id].cobble = core.get_content_id(cobble)
+	underch.stone.defs[id].ores = {}
+
 
 	if (mossy ~= nil) then
 		local mossy_cobble = "underch:" .. id .. "_mossy_cobble"
-		minetest.register_node(mossy_cobble, {
+		core.register_node(mossy_cobble, {
 			description = mossy .. " " .. name .. " Cobble",
 			tiles = {"underch_" .. id .. "_mossy_cobble.png"},
 			is_ground_content = false,
@@ -132,7 +143,7 @@ function underch.stone.register_stone(name, id, mossy)
 			sounds = default.node_sound_stone_defaults(),
 		})
 	
-		minetest.register_craft({
+		core.register_craft({
 			type = "cooking",
 			output = base,
 			recipe = mossy_cobble,
@@ -150,7 +161,7 @@ function underch.stone.register_stone(name, id, mossy)
 				{"underch_" .. id .. "_mossy_cobble.png"}, mossy_cobble, default.node_sound_stone_defaults())
 		end
 
-		underch.stone.defs[id].mossy = minetest.get_content_id(mossy_cobble)
+		underch.stone.defs[id].mossy = core.get_content_id(mossy_cobble)
 		underch.stone.defs[id].mossy_variant = true
 	else
 		underch.stone.defs[id].mossy = underch.stone.defs[id].cobble
@@ -158,9 +169,9 @@ function underch.stone.register_stone(name, id, mossy)
 	end
 
 	if underch.have_stairsredo or underch.have_moreblocks then
-		underch.stone.defs[id].stair = minetest.get_content_id("stairs:stair_" .. id .. "_cobble")
+		underch.stone.defs[id].stair = core.get_content_id("stairs:stair_" .. id .. "_cobble")
 	elseif underch.have_stairs then
-		underch.stone.defs[id].stair = minetest.get_content_id("stairs:stair_" .. id .. "_cobble")
+		underch.stone.defs[id].stair = core.get_content_id("stairs:stair_" .. id .. "_cobble")
 	else
 		underch.stone.defs[id].stair = nil
 	end
