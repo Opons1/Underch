@@ -1,5 +1,5 @@
 --CUSTOM STUFF FOR OPONS WORLD
-local ymax = -7200
+local ymax = -7100
 
 
 -- used blocks
