@@ -111,6 +111,7 @@ function underch.use_stone(vi, data, id)
 	underch.functions.replace(vi, data, c_cobble, underch.stone.defs[id].cobble)
 	underch.functions.replace(vi, data, c_mossycobble, underch.stone.defs[id].mossy)
 	underch.functions.replace(vi, data, c_cobblestair, underch.stone.defs[id].stair)
+	underch.functions.replaceores(vi, data, id)
 end
 
 -- Biome definitions
