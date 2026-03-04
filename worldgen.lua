@@ -799,8 +799,6 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local y0 = minp.y
 	local z0 = minp.z
 	if y1 > ymax+200 or y0 < ymax-64*200 then 
-		core.log("warning", "Mapgen called for y > 0, skipping generation")
-		core.chat_send_all("Mapgen called for y > 0, skipping generation")
 	return end --only generate underground
 	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
 	local area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
@@ -850,7 +848,6 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		end
 		nixz = nixz + sidelen --shift the 2D index up a layer
 	end
-	core.chat_send_all(string.format("Generated biome %i", biometosay))
 	--send data back to voxelmanip
 	vm:set_data(data)
 	vm:set_param2_data(p2data)
