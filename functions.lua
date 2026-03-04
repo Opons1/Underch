@@ -45,7 +45,7 @@ function underch.functions.replace(vi, data, def1, def2)
 end
 --NOT IN USE YET
 --untested as well, hopefully no boom from this
-function underch.function.replaceores(vi, data, stone)
+function underch.functions.replaceores(vi, data, stone)
 	if underch.stone.defs[stone].ores[data[vi]] then
 		data[vi] = underch.stone.defs[stone].ores[data[vi]]
 	end
