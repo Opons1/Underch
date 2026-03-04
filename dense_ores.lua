@@ -5,7 +5,7 @@ function underch.dense_ores.register_ore(name, id, texture, item)
 		description = name .. " Dense Ore",
 		tiles = {"default_stone.png^" .. texture .. "^(" .. texture .. "^[transform7)"},
 		groups = {cracky = 1, jit_shadow = 1},
-		after_dig_node = underch.jit.dig_shadow,
+		 
 		drop = {
 			items = {{items = {item .. " 2"}}, {items = {item}, rarity = 2}}
 		},

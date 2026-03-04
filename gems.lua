@@ -13,7 +13,7 @@ function underch.gems.register_gem(name, id)
 		description = name .. " Block",
 		tiles = {"underch_" .. id .. "_block.png"},
 		groups = {cracky = 3, jit_shadow = 1},
-		after_dig_node = underch.jit.dig_shadow,
+		 
 		is_ground_content = false,
 		sounds = default.node_sound_glass_defaults(),
 	})

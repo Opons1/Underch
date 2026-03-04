@@ -12,7 +12,7 @@ minetest.register_node("underch:mossy_dirt", {
 	description = "Mossy Dirt",
 	tiles = {"underch_mossy_dirt.png"},
 	groups = {crumbly = 3, soil = 1, jit_shadow = 1},
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	is_ground_content = true,
 	sounds = default.node_sound_dirt_defaults(),
 })
@@ -55,7 +55,7 @@ minetest.register_node("underch:dark_sichamine", {
 	description = "Dark Sichamine",
 	tiles = {"underch_dark_sichamine.png"},
 	groups = {cracky = 3, stone = 1, jit_shadow = 1},
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	is_ground_content = true,
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -64,7 +64,7 @@ minetest.register_node("underch:weedy_sichamine", {
 	description = "Weedy Sichamine",
 	tiles = {"underch_weedy_sichamine.png"},
 	groups = {cracky = 3, stone = 1, jit_shadow = 1},
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	is_ground_content = true,
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -76,7 +76,7 @@ minetest.register_node("underch:sichamine_lamp", {
 	sunlight_propagates = true,
 	is_ground_content = true,
 	groups = {cracky = 3, oddly_breakable_by_hand = 3, jit_shadow = 1},
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	sounds = default.node_sound_glass_defaults(),
 	light_source = default.LIGHT_MAX,
 })
@@ -105,7 +105,7 @@ minetest.register_node("underch:malachite", {
 	description = "Malachite",
 	tiles = {"underch_malachite.png"},
 	groups = {cracky = 3, jit_shadow = 1},
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	legacy_mineral = true,
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -114,7 +114,7 @@ minetest.register_node("underch:obscurite", {
 	description = "Obscurite",
 	tiles = {"underch_obscurite.png"},
 	groups = {jit_shadow = 1},
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	legacy_mineral = true,
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -123,7 +123,7 @@ minetest.register_node("underch:shinestone", {
 	description = "Shinestone",
 	tiles = {"underch_shinestone.png"},
 	groups = {cracky = 3, jit_shadow = 1},
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	legacy_mineral = true,
 	light_source = default.LIGHT_MAX,
 	sounds = default.node_sound_stone_defaults(),
@@ -167,7 +167,7 @@ minetest.register_node("underch:burner", {
 	groups = {cracky = 3, igniter = 4, jit_shadow = 1},
 	legacy_mineral = true,
 	after_destruct = underch.functions.remove_permanent_fire,
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	on_ignite = underch.functions.make_permanent_fire,
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -176,7 +176,7 @@ minetest.register_node("underch:vindesite_quartz_ore", {
 	description = "Vindesite Quartz Ore",
 	tiles = {"underch_vindesite.png^underch_quartz_ore.png"},
 	groups = {cracky=2, jit_shadow = 1},
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	drop = "underch:quartz",
 	sounds = default.node_sound_stone_defaults(),
 })
@@ -361,7 +361,7 @@ minetest.register_node("underch:coal_diamond", {
 	is_ground_content = false,
 	groups = {cracky = 1, jit_shadow = 1},
 	after_destruct = underch.functions.remove_permanent_fire,
-	after_dig_node = underch.jit.dig_shadow,
+	 
 	on_ignite = underch.functions.make_permanent_fire,
 	drop = {
 		items = {{items = {"default:coal_lump 8", "default:diamond"}}}

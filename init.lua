@@ -18,20 +18,13 @@ underch.have_technic_ores = minetest.get_modpath("technic_worldgen") ~= nil
 underch.have_xtraores = minetest.get_modpath("xtraores") ~= nil
 
 underch.use_jit = minetest.settings:get_bool("underch_ores_jit", false)
-underch.polynomial_pressure = minetest.settings:get_bool("underch_polynomial_pressure", false)
 
 dofile(underch.modpath .. "/dynamic.lua")
 dofile(underch.modpath .. "/functions.lua")
-
-if underch.use_jit then
-	dofile(underch.modpath .. "/jit.lua")
-else
-	underch.jit = {}
-	function underch.jit.dig_shadow(pos, oldnode, oldmetadata, digger)
-		--ores-JIT not used
-	end
+underch.jit = {}
+function underch.jit.dig_shadow(pos, oldnode, oldmetadata, digger)
+	--ores-JIT not used
 end
-
 dofile(underch.modpath .. "/nodes.lua")
 dofile(underch.modpath .. "/crafts.lua")
 dofile(underch.modpath .. "/stone.lua")
@@ -105,7 +98,8 @@ minetest.register_ore({
 })--]]
 
 -- override lava cooling function
-
+--DISABLED FOR NOW BECAUSE I RUN TECHAGE
+--[[
 default.cool_lava = function(pos, node)
 	if node.name == "default:lava_source" then
 		minetest.set_node(pos, {name = "default:obsidian"})
@@ -115,7 +109,7 @@ default.cool_lava = function(pos, node)
 	minetest.sound_play("default_cool_lava",
 		{pos = pos, max_hear_distance = 16, gain = 0.25})
 end
-
+]]
 -- moss growth
 
 minetest.register_abm({

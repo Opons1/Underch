@@ -11,7 +11,7 @@ function underch.stone.register_stone(name, id, mossy)
 		description = name,
 		tiles = {"underch_" .. id .. ".png"},
 		groups = {cracky = 3, stone = 1, smoothstone = 1, jit_shadow = 1},
-		after_dig_node = underch.jit.dig_shadow,
+		 
 		drop = cobble,
 		legacy_mineral = true,
 		sounds = default.node_sound_stone_defaults(),
@@ -22,7 +22,7 @@ function underch.stone.register_stone(name, id, mossy)
 		tiles = {"underch_" .. id .. "_cobble.png"},
 		is_ground_content = false,
 		groups = {cracky = 3, stone = 2, cobble = 1, jit_shadow = 1},
-		after_dig_node = underch.jit.dig_shadow,
+		 
 		sounds = default.node_sound_stone_defaults(),
 	})
 	
@@ -108,7 +108,7 @@ function underch.stone.register_stone(name, id, mossy)
 			tiles = {"underch_" .. id .. "_mossy_cobble.png"},
 			is_ground_content = false,
 			groups = {cracky = 3, stone = 1, mossycobble = 1, jit_shadow = 1},
-			after_dig_node = underch.jit.dig_shadow,
+			 
 			sounds = default.node_sound_stone_defaults(),
 		})
 	

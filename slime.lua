@@ -23,7 +23,7 @@ function underch.slime.regiser_slime(name, id, colour, found_in)
 		description = name .. " Slimy Block",
 		tiles = {"underch_" .. id .. "_slimy_block.png"},
 		groups = {crumbly = 1, cracky = 2, jit_shadow = 1},
-		after_dig_node = underch.jit.dig_shadow,
+		 
 		sounds = default.node_sound_dirt_defaults(),
 	})
 
@@ -31,7 +31,7 @@ function underch.slime.regiser_slime(name, id, colour, found_in)
 		description = name .. " Eye Ore",
 		tiles = {"underch_" .. id .. "_slimy_eye.png"},
 		groups = {crumbly = 1, cracky = 2, jit_shadow = 1},
-		after_dig_node = underch.jit.dig_shadow,
+		 
 		sounds = default.node_sound_dirt_defaults(),
 		drop = eye
 	})

@@ -1,3 +1,7 @@
+--CUSTOM STUFF FOR OPONS WORLD
+local ymax = -7000
+
+
 -- used blocks
 local c_air = minetest.get_content_id("air")
 local c_stone = minetest.get_content_id("default:stone")
@@ -784,33 +788,6 @@ else
 	}
 end
 
-;underch.np_darkness = {
-	offset = 0,
-	scale = 1,
-	spread = {x=200, y=200, z=200},
-	seed = 6830,
-	octaves = 3,
-	persist = 0.5
-}
-
-underch.np_water = {
-	offset = 0,
-	scale = 1,
-	spread = {x=200, y=200, z=200},
-	seed = 6831,
-	octaves = 3,
-	persist = 0.5
-}
-
-underch.np_pressure = {
-	offset = 0,
-	scale = 1,
-	spread = {x=200, y=200, z=200},
-	seed = 6832,
-	octaves = 3,
-	persist = 0.5
-}
-
 minetest.register_on_generated(function(minp, maxp, seed)
 
 	--easy reference to commonly used values
@@ -821,7 +798,10 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local x0 = minp.x
 	local y0 = minp.y
 	local z0 = minp.z
-		
+	if y1 > ymax+200 or y0 < ymax-64*200 then 
+		core.log("warning", "Mapgen called for y > 0, skipping generation")
+		core.chat_send_all("Mapgen called for y > 0, skipping generation")
+	return end --only generate underground
 	local vm, emin, emax = minetest.get_mapgen_object("voxelmanip")
 	local area = VoxelArea:new{MinEdge=emin, MaxEdge=emax}
 	local data = vm:get_data()
@@ -833,16 +813,11 @@ minetest.register_on_generated(function(minp, maxp, seed)
 	local chulens2D = {x=sidelen, y=sidelen, z=1}
 	local minposxyz = {x=x0, y=y0, z=z0} --bottom corner
 	local minposxz = {x=x0, y=z0} --2D bottom corner
-	
-	local nvals_darkness = minetest.get_perlin_map(underch.np_darkness, chulens):get_3d_map_flat(minposxyz)
-	local nvals_water = minetest.get_perlin_map(underch.np_water, chulens):get_3d_map_flat(minposxyz)
-	local nvals_pressure = minetest.get_perlin_map(underch.np_pressure, chulens):get_3d_map_flat(minposxyz)
-	
+		
 	local nixyz = 1 --3D node index
 	local nixz = 1 --2D node index
 	local nixyz2 = 1 --second 3D index for second loop
-	
-
+	local biometosay
 	for z = z0, z1 do -- for each xy plane progressing northwards
 		--increment indices
 		nixyz = nixyz + 1
@@ -851,22 +826,13 @@ minetest.register_on_generated(function(minp, maxp, seed)
 
 			local vi = area:index(x0, y, z)
 			for x = x0, x1 do -- for each node do
-				
-				local darkness = nvals_darkness[nixyz2]
-				local water = nvals_water[nixyz2]
-				local pressure = underch.functions.get_pressure(y, nvals_pressure[nixyz2])
 
-				--[[if y > -100 then -- limit the biome variety near surface
-					darkness = -0.01*y*darkness - 1 - 0.01*y
-					water = -0.01*y*water - 1 - 0.01*y
-				end--]]
-				local biome = underch.functions.get_biome(darkness, water, pressure) + 1
-
+				local biome = math.ceil((-y+ymax)/200)
+				biometosay = biome
 				if (biome < 1) or (biome > 62) then
 					print(string.format("Wrong biome %i", biome))
-					biome = 1
+					break
 				end
-
 				underch.biomegen[biome](x, y, z, vi, data, p2data, area, y == y1)
 				if data[vi] == c_stone then
 					if underch.functions.is_crust(x, y, z, vi, area, data, c_stone) then
@@ -884,7 +850,7 @@ minetest.register_on_generated(function(minp, maxp, seed)
 		end
 		nixz = nixz + sidelen --shift the 2D index up a layer
 	end
-
+	core.chat_send_all(string.format("Generated biome %i", biometosay))
 	--send data back to voxelmanip
 	vm:set_data(data)
 	vm:set_param2_data(p2data)
