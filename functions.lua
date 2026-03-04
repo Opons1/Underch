@@ -43,6 +43,12 @@ function underch.functions.replace(vi, data, def1, def2)
 		data[vi] = def2
 	end
 end
+--NOT IN USE YET
+function underch.function.replaceores(vi, data, deftable)
+	if deftable[data[vi]] then
+		data[vi] = deftable[data[vi]]
+	end
+end
 
 function underch.functions.ore(vi, data, def1, def2, chance)
 	if data[vi] == def1 and math.random() < chance then
