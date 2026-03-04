@@ -29,12 +29,11 @@ function underch.ores.register_dense_ore(name, id, texture, item, stonetexture, 
 end
 
 --old, no longer in use
---[[
+
 underch.ores.register_dense_ore("Coal", "coal", "default_mineral_coal.png", "default:coal_lump");
 underch.ores.register_dense_ore("Iron", "iron", "default_mineral_iron.png", "default:iron_lump");
 underch.ores.register_dense_ore("Copper", "copper", "default_mineral_copper.png", "default:copper_lump");
 underch.ores.register_dense_ore("Gold", "gold", "default_mineral_gold.png", "default:gold_lump");
-]]
 --newers ones
 --coal
 underch.ores.register_dense_ore("Amphibolite Coal", "amphibolite_coal", "default_mineral_coal.png", "default:coal_lump", "underch_amphibolite.png");
