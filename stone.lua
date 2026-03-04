@@ -56,6 +56,7 @@ function underch.stone.register_stone(name, id, mossy)
 	underch.ores.register_ore(name.." Copper",  id .. "_copper",  "default_mineral_copper.png",  "default:copper_lump", "underch_" .. id .. ".png", 2)
 	underch.ores.register_ore(name.." Diamond", id .. "_diamond", "default_mineral_diamond.png", "default:diamond",     "underch_" .. id .. ".png", 1)
 	--logging the ores, debating whether this should be a for loop taking in a table or this monstrosity
+	underch.stone.defs[id].ores = {}
 	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_coal")]    = core.get_content_id(base.."_coal_ore")
 	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_tin")]     = core.get_content_id(base.."_tin_ore")
 	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_gold")]    = core.get_content_id(base.."_gold_ore")
@@ -129,7 +130,6 @@ function underch.stone.register_stone(name, id, mossy)
 	
 	underch.stone.defs[id].base = core.get_content_id(base)
 	underch.stone.defs[id].cobble = core.get_content_id(cobble)
-	underch.stone.defs[id].ores = {}
 
 
 	if (mossy ~= nil) then
