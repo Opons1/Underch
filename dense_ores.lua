@@ -35,14 +35,14 @@ underch.ores.register_dense_ore("Copper", "copper", "default_mineral_copper.png"
 underch.ores.register_dense_ore("Gold", "gold", "default_mineral_gold.png", "default:gold_lump");
 --new gems yayayyayayay
 --Amethyst
-underch.ores.register_ore("Amethyst", "amethyst", "underch_amethyst_ore.png", "underch:amethyst", "underch_diorite.png", 2)
+underch.ores.register_ore("Diorite Amethyst", "diorite_amethyst", "underch_amethyst_ore.png", "underch:amethyst", "underch_diorite.png", 2)
 --ruby
-underch.ores.register_ore("Ruby", "ruby", "underch_ruby_ore.png", "underch:ruby", "underch_granite.png", 2)
+underch.ores.register_ore("Granite Ruby", "granite_ruby", "underch_ruby_ore.png", "underch:ruby", "underch_granite.png", 2)
 --emerald
-underch.ores.register_ore("Emerald", "emerald", "underch_emerald_ore.png", "underch:emerald", "underch_phonolite.png", 2)
+underch.ores.register_ore("Phonolite Emerald", "phonolite_emerald", "underch_emerald_ore.png", "underch:emerald", "underch_phonolite.png", 2)
 --saphire
-underch.ores.register_ore("Saphire", "saphire", "underch_saphire_ore.png", "underch:saphire", "underch_gneiss.png", 2)
+underch.ores.register_ore("Gneiss Saphire", "gneiss_saphire", "underch_saphire_ore.png", "underch:saphire", "underch_gneiss.png", 2)
 --Quartz
-underch.ores.register_ore("Quartz", "quartz", "underch_quartz_ore.png", "underch:quartz", "underch_diorite.png", 2)
+underch.ores.register_ore("Diorite Quartz", "diorite_quartz", "underch_quartz_ore.png", "underch:quartz", "underch_diorite.png", 2)
 --Aquamarine
-underch.ores.register_ore("Aquamarine", "aquamarine", "underch_aquamarine_ore.png", "underch:aquamarine", "underch_diorite.png", 2)
+underch.ores.register_ore("Diorite Aquamarine", "diorite_aquamarine", "underch_aquamarine_ore.png", "underch:aquamarine", "underch_diorite.png", 2)
