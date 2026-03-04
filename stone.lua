@@ -64,6 +64,17 @@ function underch.stone.register_stone(name, id, mossy)
 	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_mese")]    = core.get_content_id(base.."_mese_ore")
 	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_copper")]  = core.get_content_id(base.."_copper_ore")
 	underch.stone.defs[id].ores[core.get_content_id("default:stone_with_diamond")] = core.get_content_id(base.."_diamond_ore")
+	--MOREBLOCKS
+	--moreores:mineral_silver
+	--moreores:mineral_mithril
+	if underch.have_moreores then 
+	underch.ores.register_ore(name.." Silver", id  .. "_silver", "default_mineral_silver.png",   "moreores:silver_lump",      "underch_" .. id .. ".png", 1)
+	underch.ores.register_ore(name.." Mithril", id .. "_mithril", "default_mineral_mithril.png", "moreores:mithril_lump",     "underch_" .. id .. ".png", 1)
+	underch.stone.defs[id].ores[core.get_content_id("moreores:mineral_mithril")]    = core.get_content_id(base.."_mithril_ore")
+	underch.stone.defs[id].ores[core.get_content_id("moreores:mineral_silver")]    = core.get_content_id(base.."_silver_ore")
+	end
+
+	
 	--dense
 	--[[
 	underch.ores.register_dense_ore(name .. " Coal", id .. "_coal", "default_mineral_coal.png", "default:coal", "underch_" .. id .. ".png", 3)
