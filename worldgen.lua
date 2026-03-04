@@ -2,6 +2,7 @@
 local ymax = -7100
 
 -- used blocks
+--basic stuff
 local c_air = minetest.get_content_id("air")
 local c_stone = minetest.get_content_id("default:stone")
 local c_water = minetest.get_content_id("default:water_source")
@@ -17,14 +18,22 @@ if minetest.registered_nodes["stairs:stair_cobble"] then
 		c_cobblestair = minetest.get_content_id("stairs:stair_cobble")
 	end
 end
+--dense ores
+local c_amphibolite_coal_dense_ore = core.get_content_id("underch:amphibolite_coal_dense_ore")
+
+local c_schist_coal_dense_ore = core.get_content_id("underch:schist_coal_dense_ore")
+local c_granite_iron_dense_ore = minetest.get_content_id("underch:granite_iron_dense_ore")
+local c_gneiss_copper_dense_ore = minetest.get_content_id("underch:gneiss_copper_dense_ore")
+local c_basalt_gold_dense_ore = minetest.get_content_id("underch:basalt_gold_dense_ore")
+
 local c_coalblock = minetest.get_content_id("default:coalblock")
 local c_dust = minetest.get_content_id("underch:dust")
 local c_coal_dust = minetest.get_content_id("underch:coal_dust")
 local c_ruby_dust = minetest.get_content_id("underch:ruby_dust")
-local c_coal_dense_ore = minetest.get_content_id("underch:coal_dense_ore")
-local c_iron_dense_ore = minetest.get_content_id("underch:iron_dense_ore")
-local c_copper_dense_ore = minetest.get_content_id("underch:copper_dense_ore")
-local c_gold_dense_ore = minetest.get_content_id("underch:gold_dense_ore")
+--local c_coal_dense_ore = minetest.get_content_id("underch:coal_dense_ore")
+--local c_iron_dense_ore = minetest.get_content_id("underch:iron_dense_ore")
+--local c_copper_dense_ore = minetest.get_content_id("underch:copper_dense_ore")
+--local c_gold_dense_ore = minetest.get_content_id("underch:gold_dense_ore")
 local c_coal_diamond = minetest.get_content_id("underch:coal_diamond")
 local c_vindesite_quartz_ore = minetest.get_content_id("underch:vindesite_quartz_ore")
 local c_burner = minetest.get_content_id("underch:burner")
@@ -185,7 +194,7 @@ underch.biomegen = {
 		underch.use_stone(vi, data, "amphibolite")
 		underch.functions.in_floor(x, y, z, vi, area, data, c_stone, c_air, c_coal_dust, 1/9, underch.stone.defs["amphibolite"].base)
 		--underch.functions.ore(vi, data, underch.stone.defs["amphibolite"].base, c_coal_dust, 1/9)
-		underch.functions.ore(vi, data, underch.stone.defs["amphibolite"].base, c_coal_dense_ore, 1/201)
+		underch.functions.ore(vi, data, underch.stone.defs["amphibolite"].base, c_amphibolite_coal_dense_ore, 1/201)
 	end,
 	--vindesite
 	[20] = function(x, y, z, vi, data, p2data, area, lastlayer)
@@ -213,7 +222,7 @@ underch.biomegen = {
 		underch.use_stone(vi, data, "schist")
 		underch.functions.on_floor(x, y, z, vi, area, data, c_stone, c_air, c_black_mushroom, 1/18, underch.stone.defs["schist"].base)		
 		underch.functions.on_floor_rr(x, y, z, vi, area, data, p2data, c_stone, c_air, c_dark_tuber, 1/50, underch.stone.defs["schist"].base)		
-		underch.functions.ore(vi, data, underch.stone.defs["schist"].base, c_coal_dense_ore, 1/201)
+		underch.functions.ore(vi, data, underch.stone.defs["schist"].base, c_schist_coal_dense_ore, 1/201)
 		underch.functions.ore(vi, data, underch.stone.defs["schist"].base, c_water, 1/2000)		
 	end,
 	--black slime
@@ -435,7 +444,7 @@ underch.biomegen = {
 	--copper
 	[52] = function(x, y, z, vi, data, p2data, area, lastlayer)
 		underch.use_stone(vi, data, "gneiss")
-		underch.functions.ore(vi, data, underch.stone.defs["gneiss"].base, c_copper_dense_ore, 1/201)
+		underch.functions.ore(vi, data, underch.stone.defs["gneiss"].base, c_gneiss_copper_dense_ore, 1/201)
 		underch.functions.ore(vi, data, underch.stone.defs["gneiss"].base, c_lava, 1/1000)		
 	end,
 	--hektorite + lava
@@ -446,7 +455,7 @@ underch.biomegen = {
 	--gold
 	[54] = function(x, y, z, vi, data, p2data, area, lastlayer)
 		underch.use_stone(vi, data, "basalt")
-		underch.functions.ore(vi, data, underch.stone.defs["basalt"].base, c_gold_dense_ore, 1/407)
+		underch.functions.ore(vi, data, underch.stone.defs["basalt"].base, c_basalt_gold_dense_ore, 1/407)
 		underch.functions.ore(vi, data, underch.stone.defs["basalt"].base, c_lava, 1/1000)		
 	end,
 	--quartz + water
@@ -461,7 +470,7 @@ underch.biomegen = {
 	--iron
 	[56] = function(x, y, z, vi, data, p2data, area, lastlayer)
 		underch.use_stone(vi, data, "granite")
-		underch.functions.ore(vi, data, underch.stone.defs["granite"].base, c_iron_dense_ore, 1/207)
+		underch.functions.ore(vi, data, underch.stone.defs["granite"].base, c_granite_iron_dense_ore, 1/207)
 		underch.functions.ore(vi, data, underch.stone.defs["granite"].base, c_lava, 1/1000)		
 	end,
 	--malachite
