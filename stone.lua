@@ -43,7 +43,10 @@ function underch.stone.register_stone(name, id, mossy)
 		groups = {cracky = 2, stone = 1, stoneblock = 1},
 		sounds = default.node_sound_stone_defaults(),
 	})
-
+	-----------------------------
+	-----------TEST--------------
+	-----------------------------
+	underch.ores.register_ore(name .. " Coal", name .. "_coal", "default_mineral_coal.png", "default:coal", underch_" .. id .. ".png", 1)
 	--crafts
 	minetest.register_craft({
 		output = brick .. " 4",
