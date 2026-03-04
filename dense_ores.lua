@@ -1,6 +1,6 @@
 underch.ores = {}
 --registers an ore
-function underch.ores.register_ore(name, id, texture, item, level, stonetexture, level)
+function underch.ores.register_ore(name, id, texture, item, stonetexture, level)
 	stonetexture = stonetexture or "default_stone.png"
 	level = level or 1
 	core.register_node("underch:" .. id .. "_ore", {
