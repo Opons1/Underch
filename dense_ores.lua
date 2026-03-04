@@ -33,3 +33,17 @@ underch.ores.register_dense_ore("Coal", "coal", "default_mineral_coal.png", "def
 underch.ores.register_dense_ore("Iron", "iron", "default_mineral_iron.png", "default:iron_lump");
 underch.ores.register_dense_ore("Copper", "copper", "default_mineral_copper.png", "default:copper_lump");
 underch.ores.register_dense_ore("Gold", "gold", "default_mineral_gold.png", "default:gold_lump");
+
+--newers ones
+--coal
+underch.ores.register_dense_ore("Amphibolite Coal", "amphibolite_coal", "default_mineral_coal.png", "default:coal_lump", "underch_amphibolite.png");
+underch.ores.register_dense_ore("Schist Coal", "schist_coal", "default_mineral_coal.png", "default:coal_lump", "underch_schist.png");
+--iron
+underch.ores.register_dense_ore("Granite Iron", "granite_iron", "default_mineral_iron.png", "default:iron_lump", "underch_granite.png");
+--copper
+underch.ores.register_dense_ore("Gneiss Copper", "gneiss_copper", "default_mineral_copper.png", "default:copper_lump", "underch_gneiss.png");
+--gold
+underch.ores.register_dense_ore("Basalt Gold", "basalt_gold", "default_mineral_gold.png", "default:gold_lump", "underch_basalt.png");
+
+
+
