@@ -138,7 +138,7 @@ function underch.stone.register_stone(name, id, mossy)
 	end
 
 	if underch.have_stairsredo or underch.have_moreblocks then
-		underch.stone.defs[id].stair = minetest.get_content_id("underch:stair_" .. id .. "_cobble")
+		underch.stone.defs[id].stair = minetest.get_content_id("stairs:stair_" .. id .. "_cobble")
 	elseif underch.have_stairs then
 		underch.stone.defs[id].stair = minetest.get_content_id("stairs:stair_" .. id .. "_cobble")
 	else

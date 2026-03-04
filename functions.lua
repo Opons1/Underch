@@ -214,7 +214,7 @@ end
 
 function underch.functions.register_stairs(id_, groups_, texture_, name_, sounds_)
 	if underch.have_stairsredo then
-		stairs.register_all(id_, "underch:" .. id_, groups_, texture_, name_ .. " Stair", name_ .. " Slab", sounds_)
+		stairs.register_all(id_, "underch:" .. id_, groups_, texture_, name_, sounds_, true)
 	elseif underch.have_moreblocks then
 		stairsplus:register_all("underch", id_, "underch:" .. id_, {
 			description = name_,
