@@ -25,14 +25,13 @@ underch.jit = {}
 function underch.jit.dig_shadow(pos, oldnode, oldmetadata, digger)
 	--ores-JIT not used
 end
+dofile(underch.modpath .. "/dense_ores.lua")
 dofile(underch.modpath .. "/nodes.lua")
 dofile(underch.modpath .. "/crafts.lua")
 dofile(underch.modpath .. "/stone.lua")
 dofile(underch.modpath .. "/gems.lua")
 dofile(underch.modpath .. "/slime.lua")
 dofile(underch.modpath .. "/mushrooms.lua")
-dofile(underch.modpath .. "/dense_ores.lua")
-
 dofile(underch.modpath .. "/worldgen.lua")
 
 if underch.have_stairs or underch.have_stairsredo or underch.have_moreblocks then
