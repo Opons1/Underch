@@ -46,7 +46,7 @@ function underch.stone.register_stone(name, id, mossy)
 	-----------------------------
 	-----------TEST--------------
 	-----------------------------
-	underch.ores.register_ore(name .. " Coal", name .. "_coal", "default_mineral_coal.png", "default:coal", "underch_" .. id .. ".png", 1)
+	underch.ores.register_ore(name .. " Coal", id .. "_coal", "default_mineral_coal.png", "default:coal", "underch_" .. id .. ".png", 1)
 	--crafts
 	minetest.register_craft({
 		output = brick .. " 4",
