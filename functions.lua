@@ -44,9 +44,10 @@ function underch.functions.replace(vi, data, def1, def2)
 	end
 end
 --NOT IN USE YET
-function underch.function.replaceores(vi, data, deftable)
-	if deftable[data[vi]] then
-		data[vi] = deftable[data[vi]]
+--untested as well, hopefully no boom from this
+function underch.function.replaceores(vi, data, stone)
+	if underch.stone.defs[stone].ores[data[vi]] then
+		data[vi] = underch.stone.defs[stone].ores[data[vi]]
 	end
 end
 
