@@ -68,13 +68,77 @@ function underch.stone.register_stone(name, id, mossy)
 	--moreores:mineral_silver
 	--moreores:mineral_mithril
 	if underch.have_moreores then 
-	underch.ores.register_ore(name.." Silver", id  .. "_silver", "default_mineral_silver.png",   "moreores:silver_lump",      "underch_" .. id .. ".png", 1)
-	underch.ores.register_ore(name.." Mithril", id .. "_mithril", "default_mineral_mithril.png", "moreores:mithril_lump",     "underch_" .. id .. ".png", 1)
-	underch.stone.defs[id].ores[core.get_content_id("moreores:mineral_mithril")]    = core.get_content_id(base.."_mithril_ore")
-	underch.stone.defs[id].ores[core.get_content_id("moreores:mineral_silver")]    = core.get_content_id(base.."_silver_ore")
+	underch.ores.register_ore(name.." Silver", id  .. "_moreores_silver", "moreores_mineral_silver.png",   "moreores:silver_lump",  "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Mithril", id .. "_moreores_mithril", "moreores_mineral_mithril.png", "moreores:mithril_lump", "underch_" .. id .. ".png", 1)
+	underch.stone.defs[id].ores[core.get_content_id("moreores:mineral_mithril")] = core.get_content_id(base.."_moreores_mithril_ore")
+	underch.stone.defs[id].ores[core.get_content_id("moreores:mineral_silver")]  = core.get_content_id(base.."_moreores_silver_ore")
 	end
-
-	
+	--TECHNIC WORLDGEN
+	if underch.have_technic_ores then
+	underch.ores.register_ore(name.." Lead",     id .. "_technic_lead",     "technic_mineral_lead.png",     "technic:lead_lump",     "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Uranium",  id .. "_technic_uranium",  "technic_mineral_uranium.png",  "technic:uranium_lump",  "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Chromium", id .. "_technic_chromium", "technic_mineral_chromium.png", "technic:chromium_lump", "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Zinc",     id .. "_technic_zinc",     "technic_mineral_zinc.png",     "technic:zinc_lump",     "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Sulfur",   id .. "_technic_sulfur",   "technic_mineral_sulfur.png",   "technic:sulfur_lump",   "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("technic:mineral_lead")]     = core.get_content_id(base.."_technic_lead_ore")
+	underch.stone.defs[id].ores[core.get_content_id("technic:mineral_uranium")]  = core.get_content_id(base.."_technic_uranium_ore")
+	underch.stone.defs[id].ores[core.get_content_id("technic:mineral_chromium")] = core.get_content_id(base.."_technic_chromium_ore")
+	underch.stone.defs[id].ores[core.get_content_id("technic:mineral_zinc")]     = core.get_content_id(base.."_technic_zinc_ore")
+	underch.stone.defs[id].ores[core.get_content_id("technic:mineral_sulfur")]   = core.get_content_id(base.."_technic_sulfur_ore")
+	end
+	--INDUSTRAILTEST
+	if core.get_modpath("industrialtest") then
+	underch.ores.register_ore(name.." Iridium", id .. "_industrialtest_iridium", "industrialtest_mtg_stone_with_iridium.png", "industrialtest:iridium_lump", "underch_" .. id .. ".png", 1)
+	underch.ores.register_ore(name.." Lead",    id .. "_industrialtest_lead",    "industrialtest_mtg_stone_with_lead.png",    "industrialtest:lead_lump",    "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Uranium", id .. "_industrialtest_uranium", "industrialtest_mtg_stone_with_uranium.png", "industrialtest:uranium_lump", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("industrialtest:stone_with_iridium")] = core.get_content_id(base.."_industrialtest_iridium_ore")
+	underch.stone.defs[id].ores[core.get_content_id("industrialtest:stone_with_lead")]    = core.get_content_id(base.."_industrialtest_lead_ore")
+	underch.stone.defs[id].ores[core.get_content_id("industrialtest:stone_with_uranium")] = core.get_content_id(base.."_industrialtest_uranium_ore")
+	end
+	--GEMSTONES GITHUB
+	if underch.have_gs_amethyst then
+	underch.ores.register_ore(name.." Amethyst", id .. "_gs_amethyst_amethyst", "gs_amethyst_ore.png", "gs_amethyst:amethyst_ingot", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("gs_amethyst:amethyst_ore")] = core.get_content_id(base.."_gs_amethyst_amethyst_ore")
+	end
+	if underch.have_gs_emerald then
+	underch.ores.register_ore(name.." Emerald", id .. "_gs_emerald_emerald", "gs_emerald_ore.png", "gs_emerald:emerald_ingot", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("gs_emerald:emerald_ore")] = core.get_content_id(base.."_gs_emerald_emerald_ore")
+	end
+	if underch.have_gs_ruby then
+	underch.ores.register_ore(name.." Ruby", id .. "_gs_ruby_ruby", "gs_ruby_ore.png", "gs_ruby:ruby_ingot", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("gs_ruby:ruby_ore")] = core.get_content_id(base.."_gs_ruby_ruby_ore")
+	end
+	if underch.have_gs_sapphire then
+	underch.ores.register_ore(name.." Sapphire", id .. "_gs_sapphire_sapphire", "gs_sapphire_ore.png", "gs_sapphire:sapphire_ingot", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("gs_sapphire:sapphire_ore")] = core.get_content_id(base.."_gs_sapphire_sapphire_ore")
+	end
+	--GEMSTONES CDB
+	--spelling of amethyst is weird in the texture
+	if underch.have_amethyst then
+	underch.ores.register_ore(name.." Amethyst", id .. "_amethyst_amethyst", "ameythst_ore.png", "amethyst:amethyst_gem", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("amethyst:amethyst_ore")] = core.get_content_id(base.."_amethyst_amethyst_ore")
+	end
+	if underch.have_emerald then
+	underch.ores.register_ore(name.." Emerald", id .. "_emerald_emerald", "emerald_ore.png", "emerald:emerald_gem", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("emerald:emerald_ore")] = core.get_content_id(base.."_emerald_emerald_ore")
+	end
+	if underch.have_ruby then
+	underch.ores.register_ore(name.." Ruby", id .. "_ruby_ruby", "ruby_ore.png", "ruby:ruby_gem", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("ruby:ruby_ore")] = core.get_content_id(base.."_ruby_ruby_ore")
+	end	
+	if underch.have_sapphire then
+	underch.ores.register_ore(name.." Sapphire", id .. "_sapphire_sapphire", "sapphire_ore.png", "sapphire:sapphire_gem", "underch_" .. id .. ".png", 2)
+	underch.stone.defs[id].ores[core.get_content_id("sapphire:sapphire_ore")] = core.get_content_id(base.."_sapphire_sapphire_ore")
+	end
+	if underch.have_terumet then
+	underch.ores.register_ore(name.." Terumetal", id .. "_terumet_terumetal", "terumet_ore_raw.png", "terumet:lump_raw", "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Dense Terumetal", id .. "_terumet_dense_terumetal", "terumet_ore_dense_raw.png", "terumet:lump_raw", "underch_" .. id .. ".png", 1)
+	underch.stone.defs[id].ores[core.get_content_id("terumet:ore_raw")] = core.get_content_id(base.."_terumet_terumetal_ore")
+	underch.stone.defs[id].ores[core.get_content_id("terumet:ore_dense_raw")] = core.get_content_id(base.."_terumet_dense_terumetal_ore")
+	end
+	core.override_item("underch:" .. id .. "_terumet_dense_terumetal_ore", {
+		drop = "terumet:lump_raw 5",
+	})
 	--dense
 	--[[
 	underch.ores.register_dense_ore(name .. " Coal", id .. "_coal", "default_mineral_coal.png", "default:coal", "underch_" .. id .. ".png", 3)

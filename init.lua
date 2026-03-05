@@ -13,17 +13,25 @@ underch.have_stairs = minetest.get_modpath("stairs") ~= nil
 underch.have_stairsredo = stairs and stairs.mod and stairs.mod == "redo"
 underch.have_moreblocks = minetest.get_modpath("moreblocks") ~= nil
 
+--Gemstones modpack on github
+underch.have_gs_amethyst = minetest.get_modpath("gs_amethyst") ~= nil
+underch.have_gs_emerald = minetest.get_modpath("gs_emerald") ~= nil
+underch.have_gs_ruby = minetest.get_modpath("gs_ruby") ~= nil
+underch.have_gs_sapphire = minetest.get_modpath("gs_sapphire") ~= nil
+--Gemstones modpack on contentdb
+underch.have_amethyst = minetest.get_modpath("amethyst") ~= nil
+underch.have_emerald = minetest.get_modpath("emerald") ~= nil
+underch.have_ruby = minetest.get_modpath("ruby") ~= nil
+underch.have_sapphire = minetest.get_modpath("sapphire") ~= nil
+
+underch.have_terumet = minetest.get_modpath("terumet") ~= nil
 underch.have_moreores = minetest.get_modpath("moreores") ~= nil
 underch.have_technic_ores = minetest.get_modpath("technic_worldgen") ~= nil
-underch.have_xtraores = minetest.get_modpath("xtraores") ~= nil
-
-underch.use_jit = minetest.settings:get_bool("underch_ores_jit", false)
 
 dofile(underch.modpath .. "/dynamic.lua")
 dofile(underch.modpath .. "/functions.lua")
 underch.jit = {}
 function underch.jit.dig_shadow(pos, oldnode, oldmetadata, digger)
-	--ores-JIT not used
 end
 dofile(underch.modpath .. "/dense_ores.lua")
 dofile(underch.modpath .. "/nodes.lua")
