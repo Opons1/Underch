@@ -24,6 +24,8 @@ underch.have_emerald = minetest.get_modpath("emerald") ~= nil
 underch.have_ruby = minetest.get_modpath("ruby") ~= nil
 underch.have_sapphire = minetest.get_modpath("sapphire") ~= nil
 
+underch.have_blox = core.get_modpath("blox") ~= nil
+underch.have_quartz = core.get_modpath("quartz") ~= nil
 underch.have_terumet = minetest.get_modpath("terumet") ~= nil
 underch.have_moreores = minetest.get_modpath("moreores") ~= nil
 underch.have_technic_ores = minetest.get_modpath("technic_worldgen") ~= nil
