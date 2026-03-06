@@ -149,6 +149,12 @@ function underch.stone.register_stone(name, id, mossy)
 	if underch.have_blox then
 	underch.ores.register_ore(name.." Glow", id .. "_blox_glow", "blox_glowore.png", "blox:glowdust", "underch_" .. id .. ".png", 2)
 	underch.stone.defs[id].ores[core.get_content_id("blox:glowore")] = core.get_content_id(base.."_blox_glow_ore")
+	core.override_item("underch:"..id.."blox_glowore_ore", {
+				light_propagates = true,
+				paramtype = "light",
+				sunlight_propagates = false,
+				light_source = 8, 
+			}
 	end
 	core.register_craft({
 		output = brick .. " 4",
