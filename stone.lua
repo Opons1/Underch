@@ -154,7 +154,7 @@ function underch.stone.register_stone(name, id, mossy)
 				paramtype = "light",
 				sunlight_propagates = false,
 				light_source = 8, 
-			}
+			})
 	end
 	core.register_craft({
 		output = brick .. " 4",
