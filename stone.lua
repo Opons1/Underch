@@ -101,15 +101,15 @@ function underch.stone.register_stone(name, id, mossy)
 	underch.stone.defs[id].ores[core.get_content_id("gs_amethyst:amethyst_ore")] = core.get_content_id(base.."_gs_amethyst_amethyst_ore")
 	end
 	if underch.have_gs_emerald then
-	underch.ores.register_ore(name.." Emerald", id .. "_gs_emerald_emerald", "gs_emerald_ore.png", "gs_emerald:emerald_ingot", "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Emerald", id .. "_gs_emerald_emerald", "gs_emerald_ore.png", "gs_emerald:emerald", "underch_" .. id .. ".png", 2)
 	underch.stone.defs[id].ores[core.get_content_id("gs_emerald:emerald_ore")] = core.get_content_id(base.."_gs_emerald_emerald_ore")
 	end
 	if underch.have_gs_ruby then
-	underch.ores.register_ore(name.." Ruby", id .. "_gs_ruby_ruby", "gs_ruby_ore.png", "gs_ruby:ruby_ingot", "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Ruby", id .. "_gs_ruby_ruby", "gs_ruby_ore.png", "gs_ruby:ruby", "underch_" .. id .. ".png", 2)
 	underch.stone.defs[id].ores[core.get_content_id("gs_ruby:ruby_ore")] = core.get_content_id(base.."_gs_ruby_ruby_ore")
 	end
 	if underch.have_gs_sapphire then
-	underch.ores.register_ore(name.." Sapphire", id .. "_gs_sapphire_sapphire", "gs_sapphire_ore.png", "gs_sapphire:sapphire_ingot", "underch_" .. id .. ".png", 2)
+	underch.ores.register_ore(name.." Sapphire", id .. "_gs_sapphire_sapphire", "gs_sapphire_ore.png", "gs_sapphire:sapphire", "underch_" .. id .. ".png", 2)
 	underch.stone.defs[id].ores[core.get_content_id("gs_sapphire:sapphire_ore")] = core.get_content_id(base.."_gs_sapphire_sapphire_ore")
 	end
 	--GEMSTONES CDB
