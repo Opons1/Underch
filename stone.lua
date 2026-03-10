@@ -53,7 +53,7 @@ function underch.stone.register_stone(name, id, mossy)
 	underch.ores.register_ore(name.." Tin",     id .. "_tin",     "default_mineral_tin.png",     "default:tin_lump",    "underch_" .. id .. ".png", 2)
 	underch.ores.register_ore(name.." Gold",    id .. "_gold",    "default_mineral_gold.png",    "default:gold_lump",   "underch_" .. id .. ".png", 2)
 	underch.ores.register_ore(name.." Iron",    id .. "_iron",    "default_mineral_iron.png",    "default:iron_lump",   "underch_" .. id .. ".png", 2)
-	underch.ores.register_ore(name.." Mese",    id .. "_mese",    "default_mineral_mese.png",    "default:mese_lump",   "underch_" .. id .. ".png", 1)
+	underch.ores.register_ore(name.." Mese",    id .. "_mese",    "default_mineral_mese.png",    "default:mese_crystal",   "underch_" .. id .. ".png", 1)
 	underch.ores.register_ore(name.." Copper",  id .. "_copper",  "default_mineral_copper.png",  "default:copper_lump", "underch_" .. id .. ".png", 2)
 	underch.ores.register_ore(name.." Diamond", id .. "_diamond", "default_mineral_diamond.png", "default:diamond",     "underch_" .. id .. ".png", 1)
 	--logging the ores, debating whether this should be a for loop taking in a table or this monstrosity
