@@ -11,11 +11,11 @@ function underch.stone.register_stone(name, id, mossy)
 	core.register_node(base, {
 		description = name,
 		tiles = {"underch_" .. id .. ".png"},
-		groups = {cracky = 3, stone = 1, smoothstone = 1, jit_shadow = 1},
-		 
+		groups = {cracky = 3, stone = 1, smoothstone = 1},
 		drop = cobble,
 		legacy_mineral = true,
 		sounds = default.node_sound_stone_defaults(),
+		is_ground_content = true,
 	})
 	
 	core.register_node(cobble, {
@@ -23,8 +23,8 @@ function underch.stone.register_stone(name, id, mossy)
 		tiles = {"underch_" .. id .. "_cobble.png"},
 		is_ground_content = false,
 		groups = {cracky = 3, stone = 2, cobble = 1, jit_shadow = 1},
-		 
 		sounds = default.node_sound_stone_defaults(),
+		is_ground_content = true,
 	})
 	
 	core.register_node(brick, {
@@ -163,7 +163,6 @@ function underch.stone.register_stone(name, id, mossy)
 			{base, base},
 		}
 	})
-	
 	core.register_craft({
 		output = block .. " 9",
 		recipe = {
@@ -172,13 +171,11 @@ function underch.stone.register_stone(name, id, mossy)
 			{base, base, base},
 		}
 	})
-
 	core.register_craft({
 		type = "cooking",
 		output = base,
 		recipe = cobble,
 	})
-
 	--stairs
 	underch.functions.register_stairs(
 		id, 
@@ -186,21 +183,18 @@ function underch.stone.register_stone(name, id, mossy)
 		{"underch_" .. id .. ".png"},
 		name,
 		default.node_sound_stone_defaults())
-
 	underch.functions.register_stairs(
 		id .. "_cobble", 
 		{cracky = 3, cobblestairs = 1},
 		{"underch_" .. id .. "_cobble.png"},
 		name .. " Cobble",
 		default.node_sound_stone_defaults())
-
 	underch.functions.register_stairs(
 		id .. "_brick", 
 		{cracky = 3},
 		{"underch_" .. id .. "_brick.png"},
 		name .. " Bricks",
 		default.node_sound_stone_defaults())
-
 	underch.functions.register_stairs(
 		id .. "_block", 
 		{cracky = 3},
@@ -208,10 +202,8 @@ function underch.stone.register_stone(name, id, mossy)
 		name .. " Block",
 		default.node_sound_stone_defaults())
 
-	
 	underch.stone.defs[id].base = core.get_content_id(base)
 	underch.stone.defs[id].cobble = core.get_content_id(cobble)
-
 
 	if (mossy ~= nil) then
 		local mossy_cobble = "underch:" .. id .. "_mossy_cobble"
@@ -220,7 +212,6 @@ function underch.stone.register_stone(name, id, mossy)
 			tiles = {"underch_" .. id .. "_mossy_cobble.png"},
 			is_ground_content = false,
 			groups = {cracky = 3, stone = 1, mossycobble = 1, jit_shadow = 1},
-			 
 			sounds = default.node_sound_stone_defaults(),
 		})
 	
