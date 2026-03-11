@@ -4,12 +4,12 @@ function underch.gems.register_gem(name, id)
 	local block = "underch:" .. id .. "_block"
 	local item = "underch:" .. id
 
-	minetest.register_craftitem(item, {
+	core.register_craftitem(item, {
 		description = name,
 		inventory_image = "underch_" .. id .. ".png"
 	})
 
-	minetest.register_node(block, {
+	core.register_node(block, {
 		description = name .. " Block",
 		tiles = {"underch_" .. id .. "_block.png"},
 		groups = {cracky = 3, jit_shadow = 1},
@@ -18,7 +18,7 @@ function underch.gems.register_gem(name, id)
 		sounds = default.node_sound_glass_defaults(),
 	})
 
-	minetest.register_node("underch:" .. id .. "_ore", {
+	core.register_node("underch:" .. id .. "_ore", {
 		description = name .. " Ore",
 		tiles = {"default_stone.png^underch_" .. id .."_ore.png"},
 		groups = {cracky=2},
@@ -26,7 +26,7 @@ function underch.gems.register_gem(name, id)
 		sounds = default.node_sound_stone_defaults(),
 	})
 
-	minetest.register_node("underch:" .. id .. "_crystal", {
+	core.register_node("underch:" .. id .. "_crystal", {
 		description = name .. " Crystal",
 		tiles = {"underch_" .. id .. "_crystal.png"},
 		groups = {cracky = 2},
@@ -39,7 +39,7 @@ function underch.gems.register_gem(name, id)
 		sounds = default.node_sound_glass_defaults(),
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = block,
 		recipe = {
 			{item, item, item},
@@ -48,13 +48,13 @@ function underch.gems.register_gem(name, id)
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = item .. " 9",
 		type = "shapeless",
 		recipe = {block}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = item .. " 2",
 		type = "shapeless",
 		recipe = {"underch:" .. id .. "_crystal"}
@@ -82,7 +82,7 @@ underch.ores.register_ore("Gneiss Saphire", "gneiss_saphire", "underch_saphire_o
 underch.ores.register_ore("Diorite Quartz", "diorite_quartz", "underch_quartz_ore.png", "underch:quartz", "underch_diorite.png", 2)
 underch.ores.register_ore("Diorite Aquamarine", "diorite_aquamarine", "underch_aquamarine_ore.png", "underch:aquamarine", "underch_diorite.png", 2)
 
-minetest.register_node("underch:mese_crystal", {
+core.register_node("underch:mese_crystal", {
 	description = "Mese Crystal",
 	tiles = {"underch_mese_crystal.png"},
 	groups = {cracky = 2},
@@ -95,7 +95,7 @@ minetest.register_node("underch:mese_crystal", {
 	sounds = default.node_sound_glass_defaults(),
 })
 
-minetest.register_craft({
+core.register_craft({
 	output = "default:mese_crystal 2",
 	type = "shapeless",
 	recipe = {"underch:mese_crystal"}
