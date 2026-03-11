@@ -6,12 +6,12 @@ function underch.slime.regiser_slime(name, id, colour, found_in)
 	local source = "underch:" .. id .. "_slime_source"
 	local flowing = "underch:" .. id .. "_slime_flowing"
 
-	minetest.register_craftitem(eye, {
+	core.register_craftitem(eye, {
 		description = name .. " Eye",
 		inventory_image = "underch_" .. id .. "_eye_item.png"
 	})
 
-	minetest.register_node(eye_block, {
+	core.register_node(eye_block, {
 		description = name .. " Eye Block",
 		tiles = {"underch_" .. id .. "_eye_block.png"},
 		groups = {oddly_breakable_by_hand = 2},
@@ -19,7 +19,7 @@ function underch.slime.regiser_slime(name, id, colour, found_in)
 		sounds = default.node_sound_dirt_defaults(),
 	})
 
-	minetest.register_node("underch:" .. id .. "_slimy_block", {
+	core.register_node("underch:" .. id .. "_slimy_block", {
 		description = name .. " Slimy Block",
 		tiles = {"underch_" .. id .. "_slimy_block.png"},
 		groups = {crumbly = 1, cracky = 2, jit_shadow = 1},
@@ -27,7 +27,7 @@ function underch.slime.regiser_slime(name, id, colour, found_in)
 		sounds = default.node_sound_dirt_defaults(),
 	})
 
-	minetest.register_node("underch:" .. id .. "_eye_ore", {
+	core.register_node("underch:" .. id .. "_eye_ore", {
 		description = name .. " Eye Ore",
 		tiles = {"underch_" .. id .. "_slimy_eye.png"},
 		groups = {crumbly = 1, cracky = 2, jit_shadow = 1},
@@ -36,7 +36,7 @@ function underch.slime.regiser_slime(name, id, colour, found_in)
 		drop = eye
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = eye_block,
 		recipe = {
 			{eye, eye, eye},
@@ -45,19 +45,19 @@ function underch.slime.regiser_slime(name, id, colour, found_in)
 		}
 	})
 
-	minetest.register_craft({
+	core.register_craft({
 		output = eye .. " 9",
 		type = "shapeless",
 		recipe = {eye_block}
 	})
 
---[[	minetest.register_craft({
+--[[	core.register_craft({
 		output = "underch:" .. id .. "_slime_brick",
 		type = "cooking",
 		recipe = "underch:" .. id .. "_slimy_block"
 	})--]]
 	
-	minetest.register_node(source, {
+	core.register_node(source, {
 		description = name .. " Slime Source",
 		drawtype = "liquid",
 		tiles = {"underch_" .. id .. "_slime.png"},
@@ -80,7 +80,7 @@ function underch.slime.regiser_slime(name, id, colour, found_in)
 		sounds = default.node_sound_sand_defaults(),
 	})
 	
-	minetest.register_node(flowing, {
+	core.register_node(flowing, {
 		description = name .. " Flowing Slime",
 		drawtype = "flowingliquid",
 		tiles = {"underch_" .. id .. "_slime.png"},
@@ -155,25 +155,25 @@ underch.slime.regiser_slime("Green", "green", {a = 210, r = 20, g = 160, b = 0},
 underch.slime.regiser_slime("Purple", "purple", {a = 210, r = 160, g = 0, b = 200}, "underch:purple_slimestone")
 underch.slime.regiser_slime("Red", "red", {a = 210, r = 160, g = 0, b = 30}, "underch:red_slimestone")
 
-minetest.register_craft({
+core.register_craft({
 	recipe = "underch:green_slimy_block",
 	type = "cooking",
 	output = "underch:green_slimestone"
 })
 
-minetest.register_craft({
+core.register_craft({
 	recipe = "underch:purple_slimy_block",
 	type = "cooking",
 	output = "underch:purple_slimestone"
 })
 
-minetest.register_craft({
+core.register_craft({
 	recipe = "underch:red_slimy_block",
 	type = "cooking",
 	output = "underch:red_slimestone"
 })
 
-minetest.register_craft({
+core.register_craft({
 	recipe = "underch:black_slimy_block",
 	type = "cooking",
 	output = "underch:slate"
