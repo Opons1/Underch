@@ -1,7 +1,7 @@
 underch.mushrooms = {}
 
 function underch.mushrooms.register_mushroom(id, name, texture, heal, box)
-	minetest.register_node(id, {
+	core.register_node(id, {
 		description = name,
 		tiles = {texture},
 		inventory_image = texture,
@@ -13,7 +13,7 @@ function underch.mushrooms.register_mushroom(id, name, texture, heal, box)
 		buildable_to = true,
 		groups = {snappy = 3, attached_node = 1, flammable = 1},
 		sounds = default.node_sound_leaves_defaults(),
-		on_use = minetest.item_eat(heal),
+		on_use = core.item_eat(heal),
 		selection_box = {
 			type = "fixed",
 			fixed = box,
@@ -25,7 +25,7 @@ underch.mushrooms.register_mushroom("underch:green_mushroom", "Green Mushroom", 
 underch.mushrooms.register_mushroom("underch:black_mushroom", "Black Mushroom", "underch_black_mushroom.png", 0, {-4 / 16, -0.5, -4 / 16, 4 / 16, 1 / 16, 4 / 16});
 underch.mushrooms.register_mushroom("underch:orange_mushroom", "Orange Mushroom", "underch_orange_mushroom.png", 1, {-3 / 16, -0.5, -3 / 16, 3 / 16, 7 / 16, 3 / 16});
 
-minetest.register_node("underch:burning_mushroom", {
+core.register_node("underch:burning_mushroom", {
 	description = "Burning Mushroom",
 	tiles = {{
 		name = "underch_burning_mushroom.png",
@@ -45,7 +45,7 @@ minetest.register_node("underch:burning_mushroom", {
 	buildable_to = true,
 	groups = {snappy = 3, attached_node = 1},
 	sounds = default.node_sound_leaves_defaults(),
-	on_use = minetest.item_eat(-2),
+	on_use = core.item_eat(-2),
 	light_source = 8,
 	damage_per_second = 1,
 	selection_box = {
@@ -54,7 +54,7 @@ minetest.register_node("underch:burning_mushroom", {
 	}
 })
 
-minetest.register_node("underch:dark_tuber", {
+core.register_node("underch:dark_tuber", {
 	description = "Dark Tuber",
 	tiles = {"underch_dark_tuber.png"},
 	drawtype = "mesh",
@@ -65,6 +65,6 @@ minetest.register_node("underch:dark_tuber", {
 	walkable = false,
 	groups = {snappy = 3, attached_node = 1},
 	sounds = default.node_sound_leaves_defaults(),
-	on_use = minetest.item_eat(2),
+	on_use = core.item_eat(2),
 })
 
