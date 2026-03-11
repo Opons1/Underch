@@ -1,3 +1,4 @@
+Hume2 License:
 License of source code and models
 ---------------------------------
 
