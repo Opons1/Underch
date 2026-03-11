@@ -9,6 +9,7 @@ function underch.ores.register_ore(name, id, texture, item, stonetexture, level)
 		groups = {cracky = level},
 		drop = item,
 		sounds = default.node_sound_stone_defaults(),
+		is_ground_content = true,
 	})
 end
 
@@ -25,6 +26,7 @@ function underch.ores.register_dense_ore(name, id, texture, item, stonetexture, 
 			items = {{items = {item .. " 2"}}, {items = {item}, rarity = 2}}
 		},
 		sounds = default.node_sound_stone_defaults(),
+		is_ground_content = true,
 	})
 end
 
