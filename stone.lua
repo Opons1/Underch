@@ -74,6 +74,7 @@ function underch.stone.register_stone(name, id, mossy)
 	underch.stone.defs[id].ores[core.get_content_id("moreores:mineral_silver")]  = core.get_content_id(base.."_moreores_silver_ore")
 	end
 	--TECHNIC WORLDGEN
+	table.insert(core.registered_on_mods_loaded, 1, function()
 	if underch.have_technic_ores then
 	underch.ores.register_ore(name.." Lead",     id .. "_technic_lead",     "technic_mineral_lead.png",     "technic:lead_lump",     "underch_" .. id .. ".png", 2)
 	underch.ores.register_ore(name.." Uranium",  id .. "_technic_uranium",  "technic_mineral_uranium.png",  "technic:uranium_lump",  "underch_" .. id .. ".png", 2)
@@ -86,6 +87,7 @@ function underch.stone.register_stone(name, id, mossy)
 	underch.stone.defs[id].ores[core.get_content_id("technic:mineral_zinc")]     = core.get_content_id(base.."_technic_zinc_ore")
 	underch.stone.defs[id].ores[core.get_content_id("technic:mineral_sulfur")]   = core.get_content_id(base.."_technic_sulfur_ore")
 	end
+	end)
 	--INDUSTRAILTEST
 	if core.get_modpath("industrialtest") then
 	underch.ores.register_ore(name.." Iridium", id .. "_industrialtest_iridium", "industrialtest_mtg_stone_with_iridium.png", "industrialtest:iridium_lump", "underch_" .. id .. ".png", 1)

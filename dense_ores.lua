@@ -3,7 +3,7 @@ underch.ores = {}
 function underch.ores.register_ore(name, id, texture, item, stonetexture, level)
 	stonetexture = stonetexture or "default_stone.png"
 	level = level or 1
-	core.register_node("underch:" .. id .. "_ore", {
+	core.register_node(":underch:" .. id .. "_ore", {
 		description = name .. " Ore",
 		tiles = {stonetexture .. "^" .. texture},
 		groups = {cracky = level},
@@ -17,7 +17,7 @@ end
 function underch.ores.register_dense_ore(name, id, texture, item, stonetexture, level)
 	stonetexture = stonetexture or "default_stone.png"
 	level = level or 1
-	core.register_node("underch:" .. id .. "_dense_ore", {
+	core.register_node(":underch:" .. id .. "_dense_ore", {
 		description = "Dense " .. name .. " Ore",
 		tiles = {stonetexture.. "^" .. texture .. "^(" .. texture .. "^[transform7)"},
 		groups = {cracky = level},
