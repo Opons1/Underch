@@ -25,6 +25,7 @@ local c_granite_iron_dense_ore     = core.get_content_id("underch:granite_iron_d
 local c_gneiss_copper_dense_ore    = core.get_content_id("underch:gneiss_copper_dense_ore")
 local c_basalt_gold_dense_ore      = core.get_content_id("underch:basalt_gold_dense_ore")
 
+local c_hektorite = core.get_content_id("underch:hektorite")
 local c_coalblock                = core.get_content_id("default:coalblock")
 local c_dust                     = core.get_content_id("underch:dust")
 local c_coal_dust                = core.get_content_id("underch:coal_dust")
