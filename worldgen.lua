@@ -549,7 +549,7 @@ core.register_on_generated(function(minp, maxp, seed)
 				local biome = math.ceil((-y+ymax)/200)
 				biometosay = biome
 				if (biome < 1) or (biome > 62) then
-					print(string.format("Wrong biome %i", biome))
+					--print(string.format("Wrong biome %i", biome))
 					break
 				end
 				underch.biomegen[biome](x, y, z, vi, data, p2data, area, y == y1)
