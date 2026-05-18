@@ -29,7 +29,7 @@ function underch.jit.dig_shadow(pos, oldnode, oldmetadata, digger)
 end
 dofile(underch.modpath .. "/dynamic.lua")
 dofile(underch.modpath .. "/functions.lua")
-dofile(underch.modpath .. "/dense_ores.lua")
+dofile(underch.modpath .. "/ores.lua")
 dofile(underch.modpath .. "/nodes.lua")
 dofile(underch.modpath .. "/crafts.lua")
 dofile(underch.modpath .. "/stone.lua")
