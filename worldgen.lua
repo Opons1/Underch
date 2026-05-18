@@ -546,7 +546,7 @@ core.register_on_generated(function(minp, maxp, seed)
 			local vi = area:index(x0, y, z)
 			for x = x0, x1 do -- for each node do
 
-				local biome = math.ceil((-y+ymax)/200)
+				local biome = math.ceil((-y+ymax+math.random(-5, 5))/200)
 				biometosay = biome
 				if (biome < 1) or (biome > 62) then
 					--print(string.format("Wrong biome %i", biome))
