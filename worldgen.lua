@@ -572,6 +572,9 @@ core.register_on_generated(function(minp, maxp, seed)
 	--send data back to voxelmanip
 	vm:set_data(data)
 	vm:set_param2_data(p2data)
+
+	--calc liquids
+	vm:update_liquids()
 	--calc lighting
 	vm:set_lighting({day=0, night=0})
 	vm:calc_lighting()
