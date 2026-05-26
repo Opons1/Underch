@@ -125,7 +125,7 @@ function underch.dynamic.register_flooder(id, air, material, sides, size, ores, 
 		drop = "",
 		on_punch = my_lbm
 	})
-
+--[[
 	minetest.register_lbm({
 	     	nodenames = {"underch:dynamic_" .. id},
 		interval = 0.1,
@@ -133,6 +133,7 @@ function underch.dynamic.register_flooder(id, air, material, sides, size, ores, 
 		name = "underch:dynamic_" .. id,
 		run_at_every_load = true,
 		action = my_lbm
+	]]
 	})
 end
 
