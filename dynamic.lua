@@ -20,6 +20,9 @@ underch.dynamic.all_corners = {
 		{x = -1, y = -1, z = -1}
 	}
 
+	
+local lbm_queue = {}
+
 function underch.dynamic.extend_me(pos, air, material, sides, chance)
 	for _, p in pairs(sides) do
 		local pp = {x = pos.x+p.x, y = pos.y+p.y, z = pos.z+p.z}
@@ -89,10 +92,33 @@ function underch.dynamic.flood_me(pos, air, material, sides, size, ores, tops)
 	minetest.set_node(pos, {name = material})
 end
 
+--processes exactly 1 queued generation task every global step
+minetest.register_globalstep(function(dtime)
+	if #lbm_queue > 0 then
+		local job = table.remove(lbm_queue, 1)
+		
+		-- only execute if the block is still loaded in memory
+		if minetest.get_node_or_nil(job.pos) then
+			if job.type == "extender" then
+				underch.dynamic.extend_me(job.pos, job.air, job.material, job.sides, job.chance)
+			elseif job.type == "flooder" then
+				underch.dynamic.flood_me(job.pos, job.air, job.material, job.sides, job.size, job.ores, job.tops)
+			end
+		end
+	end
+end)
+
 function underch.dynamic.register_extender(id, air, material, sides, chance)
 
-	local function my_lbm(pos)
-		underch.dynamic.extend_me(pos, air, material, sides, chance)
+	local function queue_lbm(pos)
+		table.insert(lbm_queue, {
+			type = "extender",
+			pos = pos,
+			air = air,
+			material = material,
+			sides = sides,
+			chance = chance
+		})
 	end
 
 	minetest.register_node("underch:dynamic_" .. id, {
@@ -100,7 +126,7 @@ function underch.dynamic.register_extender(id, air, material, sides, chance)
 		tiles = {"underch_structure.png"},
 		groups = {not_in_creative_inventory = 1},
 		drop = "",
-		on_punch = my_lbm
+		on_punch = queue_lbm
 	})
 
 	minetest.register_lbm({
@@ -108,14 +134,23 @@ function underch.dynamic.register_extender(id, air, material, sides, chance)
 		interval = 0.1,
 		name = "underch:dynamic_" .. id,
 		run_at_every_load = true,
-		action = my_lbm
+		action = queue_lbm
 	})
 end
 
 function underch.dynamic.register_flooder(id, air, material, sides, size, ores, tops)
 
-	local function my_lbm(pos)
-		underch.dynamic.flood_me(pos, air, material, sides, size, ores, tops)
+	local function queue_lbm(pos)
+		table.insert(lbm_queue, {
+			type = "flooder",
+			pos = pos,
+			air = air,
+			material = material,
+			sides = sides,
+			size = size,
+			ores = ores,
+			tops = tops
+		})
 	end
 
 	minetest.register_node("underch:dynamic_" .. id, {
@@ -123,17 +158,16 @@ function underch.dynamic.register_flooder(id, air, material, sides, size, ores, 
 		tiles = {"underch_structure.png"},
 		groups = {not_in_creative_inventory = 1},
 		drop = "",
-		on_punch = my_lbm
+		on_punch = queue_lbm
 	})
---[[
+
 	minetest.register_lbm({
 	     	nodenames = {"underch:dynamic_" .. id},
 		interval = 0.1,
 		chance = 1,
 		name = "underch:dynamic_" .. id,
 		run_at_every_load = true,
-		action = my_lbm
-	]]
+		action = queue_lbm
 	})
 end
 
@@ -180,4 +214,3 @@ underch.dynamic.register_flooder("fs", "underch:schist", "underch:fiery_dust", u
 underch.dynamic.register_flooder("fo", "underch:omphyrite", "underch:fiery_dust", underch.dynamic.all_sides, 30)
 underch.dynamic.register_flooder("fp", "underch:pegmatite", "underch:fiery_dust", underch.dynamic.all_sides, 30)
 underch.dynamic.register_flooder("fa", "underch:andesite", "underch:fiery_dust", underch.dynamic.all_sides, 30)
-
