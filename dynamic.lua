@@ -92,23 +92,46 @@ function underch.dynamic.flood_me(pos, air, material, sides, size, ores, tops)
 	minetest.set_node(pos, {name = material})
 end
 
---processes exactly 1 queued generation task every global step
+local queue_start = 1
+
 minetest.register_globalstep(function(dtime)
-	if #lbm_queue > 0 then
-		local job = table.remove(lbm_queue, 1)
+	local queue_len = #lbm_queue - queue_start + 1
+	if queue_len > 0 then
 		
-		-- only execute if the block is still loaded in memory
-		if minetest.get_node_or_nil(job.pos) then
-			if job.type == "extender" then
-				underch.dynamic.extend_me(job.pos, job.air, job.material, job.sides, job.chance)
-			elseif job.type == "flooder" then
-				underch.dynamic.flood_me(job.pos, job.air, job.material, job.sides, job.size, job.ores, job.tops)
+		-- Set a strict time budget of 2 milliseconds (0.002 seconds)
+		local start_time = minetest.get_us_time()
+		local time_budget = 200000 -- 0.2 seconds
+		
+		while (minetest.get_us_time() - start_time) < time_budget do
+			if queue_start > #lbm_queue then break end
+			
+			local job = lbm_queue[queue_start]
+			lbm_queue[queue_start] = nil -- Free memory slot
+			queue_start = queue_start + 1
+			
+			if minetest.get_node_or_nil(job.pos) then
+				if job.type == "extender" then
+					underch.dynamic.extend_me(job.pos, job.air, job.material, job.sides, job.chance)
+				elseif job.type == "flooder" then
+					underch.dynamic.flood_me(job.pos, job.air, job.material, job.sides, job.size, job.ores, job.tops)
+				end
 			end
+		end
+		
+		-- Garbage collection safety: reset the table if it's completely empty
+		if queue_start > #lbm_queue then
+			lbm_queue = {}
+			queue_start = 1
 		end
 	end
 end)
 
+
 function underch.dynamic.register_extender(id, air, material, sides, chance)
+
+	local function my_lbm(pos)
+		underch.dynamic.extend_me(pos, air, material, sides, chance)
+	end
 
 	local function queue_lbm(pos)
 		table.insert(lbm_queue, {
@@ -126,7 +149,7 @@ function underch.dynamic.register_extender(id, air, material, sides, chance)
 		tiles = {"underch_structure.png"},
 		groups = {not_in_creative_inventory = 1},
 		drop = "",
-		on_punch = queue_lbm
+		on_punch = my_lbm
 	})
 
 	minetest.register_lbm({
@@ -139,6 +162,10 @@ function underch.dynamic.register_extender(id, air, material, sides, chance)
 end
 
 function underch.dynamic.register_flooder(id, air, material, sides, size, ores, tops)
+		-- Direct activation bypasses the queue completely
+	local function my_lbm(pos)
+		underch.dynamic.flood_me(pos, air, material, sides, size, ores, tops)
+	end
 
 	local function queue_lbm(pos)
 		table.insert(lbm_queue, {
@@ -158,11 +185,11 @@ function underch.dynamic.register_flooder(id, air, material, sides, size, ores, 
 		tiles = {"underch_structure.png"},
 		groups = {not_in_creative_inventory = 1},
 		drop = "",
-		on_punch = queue_lbm
+		on_punch = my_lbm
 	})
 
 	minetest.register_lbm({
-	     	nodenames = {"underch:dynamic_" .. id},
+	    nodenames = {"underch:dynamic_" .. id},
 		interval = 0.1,
 		chance = 1,
 		name = "underch:dynamic_" .. id,
@@ -214,3 +241,15 @@ underch.dynamic.register_flooder("fs", "underch:schist", "underch:fiery_dust", u
 underch.dynamic.register_flooder("fo", "underch:omphyrite", "underch:fiery_dust", underch.dynamic.all_sides, 30)
 underch.dynamic.register_flooder("fp", "underch:pegmatite", "underch:fiery_dust", underch.dynamic.all_sides, 30)
 underch.dynamic.register_flooder("fa", "underch:andesite", "underch:fiery_dust", underch.dynamic.all_sides, 30)
+
+
+
+minetest.register_chatcommand("underch_lbm", {
+	params = "",
+	description = "Shows the current size of the pending LBM queue.",
+	privs = {server = true}, 
+	func = function(name, param)
+		local queue_size = lbm_queue and (#lbm_queue - queue_start + 1) or 0
+		return true, "LBM queue size: " .. queue_size
+	end,
+})
