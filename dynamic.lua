@@ -98,7 +98,6 @@ minetest.register_globalstep(function(dtime)
 	local queue_len = #lbm_queue - queue_start + 1
 	if queue_len > 0 then
 		
-		-- Set a strict time budget of 2 milliseconds (0.002 seconds)
 		local start_time = minetest.get_us_time()
 		local time_budget = 200000 -- 0.2 seconds
 		
@@ -118,7 +117,6 @@ minetest.register_globalstep(function(dtime)
 			end
 		end
 		
-		-- Garbage collection safety: reset the table if it's completely empty
 		if queue_start > #lbm_queue then
 			lbm_queue = {}
 			queue_start = 1
@@ -162,7 +160,6 @@ function underch.dynamic.register_extender(id, air, material, sides, chance)
 end
 
 function underch.dynamic.register_flooder(id, air, material, sides, size, ores, tops)
-		-- Direct activation bypasses the queue completely
 	local function my_lbm(pos)
 		underch.dynamic.flood_me(pos, air, material, sides, size, ores, tops)
 	end
