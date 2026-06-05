@@ -99,7 +99,7 @@ minetest.register_globalstep(function(dtime)
 	if queue_len > 0 then
 		
 		local start_time = minetest.get_us_time()
-		local time_budget = 100000 -- 0.1 seconds
+		local time_budget = 50000 -- 0.05 seconds
 		
 		while (minetest.get_us_time() - start_time) < time_budget do
 			if queue_start > #lbm_queue then break end
