@@ -24,6 +24,7 @@ underch.have_quartz       = core.get_modpath("quartz") ~= nil
 underch.have_terumet      = core.get_modpath("terumet") ~= nil
 underch.have_moreores     = core.get_modpath("moreores") ~= nil
 underch.have_technic_ores = core.get_modpath("technic_worldgen") ~= nil
+
 underch.jit = {}
 function underch.jit.dig_shadow(pos, oldnode, oldmetadata, digger)
 end
