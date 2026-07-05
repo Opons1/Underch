@@ -25,9 +25,11 @@ function underch.gems.register_gem(name, id)
 		drop = item,
 		sounds = default.node_sound_stone_defaults(),
 	})
+	core.register_on_mods_loaded(function()
 	if terumet and terumet.version and terumet.version.opw then
 		terumet.register_ore_saw_node("underch:" .. id .. "_ore")
 	end
+	end)
 	core.register_node("underch:" .. id .. "_crystal", {
 		description = name .. " Crystal",
 		tiles = {"underch_" .. id .. "_crystal.png"},

@@ -11,9 +11,11 @@ function underch.ores.register_ore(name, id, texture, item, stonetexture, level)
 		sounds = default.node_sound_stone_defaults(),
 		is_ground_content = true,
 	})
+	core.register_on_mods_loaded(function()
 	if terumet and terumet.version and terumet.version.opw then
 		terumet.register_ore_saw_node("underch:" .. id .. "_ore")
 	end
+	end)
 end
 
 --registers a dense ore
@@ -31,9 +33,11 @@ function underch.ores.register_dense_ore(name, id, texture, item, stonetexture, 
 		sounds = default.node_sound_stone_defaults(),
 		is_ground_content = true,
 	})
+	core.register_on_mods_loaded(function()
 	if terumet and terumet.version and terumet.version.opw then
 		terumet.register_ore_saw_node("underch:" .. id .. "_ore")
 	end
+	end)
 end
 
 --old, no longer in use
